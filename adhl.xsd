@@ -26,7 +26,7 @@ You should have received a copy of the GNU Affero General Public License along w
 	<xs:element name="adhlResponse">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="types:record" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="types:pid" minOccurs="0" maxOccurs="unbounded"/>
 				<xs:element ref="types:error" minOccurs="0"/>
 			</xs:sequence>
 		</xs:complexType>
@@ -71,6 +71,7 @@ You should have received a copy of the GNU Affero General Public License along w
 		<xs:complexType>
 			<xs:choice>
 				<xs:element ref="types:localId"/>
+				<xs:element ref="types:pid"/>
 				<xs:element ref="types:isbn"/>
 				<xs:element ref="types:faust"/>
 			</xs:choice>
@@ -109,6 +110,7 @@ You should have received a copy of the GNU Affero General Public License along w
 	<xs:element name="faust" type="xs:string"/>
 	<xs:element name="from" type="xs:date"/>
 	<xs:element name="identifier" type="xs:string"/>
+	<xs:element name="pid" type="xs:string"/>
 	<xs:element name="isbn" type="xs:string"/>
 	<xs:element name="lid" type="xs:string"/>
 	<xs:element name="lok" type="xs:integer"/>

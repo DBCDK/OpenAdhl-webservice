@@ -41,7 +41,7 @@ class TestADHLRequest extends UnitTestCase {
     $params->id->_value->pid= $pid;
 
 
-    $server = new ADHLServer("../adhl.ini");
+    $server = new ADHLServer("adhl.ini");
 
     $result = $server->ADHLRequestMethod($params, null);
 

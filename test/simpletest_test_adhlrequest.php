@@ -6,8 +6,12 @@ set_include_path(
   dirname(__FILE__) . '/../OLS_class_lib/simpletest' .  PATH_SEPARATOR .
   __DIR__ . '/..');
 
-require_once('autorun.php');
+//require_once('autorun.php');
 //require_once('../server.php');
+
+require_once( 'unit_tester.php');
+require_once( 'reporter.php');
+require_once( 'xml.php');
 
 class TestADHLRequest extends UnitTestCase {
 
@@ -41,7 +45,7 @@ class TestADHLRequest extends UnitTestCase {
     $params->id->_value->pid= $pid;
 
 
-    $server = new ADHLServer("adhl.ini");
+    $server = new ADHLServer(dirname(__FILE__) . "/../adhl.ini");
 
     $result = $server->ADHLRequestMethod($params, null);
 
@@ -258,5 +262,8 @@ class TestADHLRequest extends UnitTestCase {
 
 
 }
+
+$test = new TestADHLRequest();
+$test->run(new XmlReporter());
 
 

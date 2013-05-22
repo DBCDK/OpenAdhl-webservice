@@ -1,6 +1,11 @@
 <?php
 
-set_include_path(get_include_path() . PATH_SEPARATOR . dirname(__FILE__) . '/../' . PATH_SEPARATOR . dirname(__FILE__) . '/../OLS_class_lib/simpletest');
+set_include_path(
+  get_include_path() . PATH_SEPARATOR .
+  dirname(__FILE__) . '/../' . PATH_SEPARATOR .
+  dirname(__FILE__) . '/../OLS_class_lib/simpletest' .  PATH_SEPARATOR .
+  __DIR__ . '/..');
+
 require_once('autorun.php');
 //require_once('../server.php');
 
@@ -8,9 +13,9 @@ class TestADHLRequest extends UnitTestCase {
 
   function setUp(){
     /** include ADHL service classes */
-    require_once("../lib/ADHLServer.php");
-    require_once("../lib/pg_db.php");
-    require_once("../lib/helpFunc.php");
+    require_once("lib/ADHLServer.php");
+    require_once("lib/pg_db.php");
+    require_once("lib/helpFunc.php");
 
     // Turn of cache
     ADHLServer::$cache = false;

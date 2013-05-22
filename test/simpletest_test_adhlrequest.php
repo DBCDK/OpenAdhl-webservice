@@ -78,7 +78,7 @@ class TestADHLRequest extends UnitTestCase {
 
       4 => Array
       (
-        'lid' => '23534819',
+        'lid' => '23534829',
         'lok' => '710100',
       ),
     );

@@ -12,11 +12,15 @@ class ADHLServer extends webServiceServer {
   }
 
 
+  /** ADHLRequest
+   * @param $params
+   * @return stdClass Response formed as an object
+   */
   public function ADHLRequest($params) {
 
     $records=$this->ADHLRequestMethod($params);
 
-    return $this->response($records, 'ADHLResponse');
+    return $this->response($records, 'adhlResponse');
   }
 
   /** \brief The function handling the request
@@ -40,7 +44,7 @@ class ADHLServer extends webServiceServer {
     if (isset($params->numRecords->_value)) {
       $query_params['numRecords'] = $params->numRecords->_value;
     }
-    $ids = $this->request($query_params, 'ADHLRequest');
+    $ids = $this->request($query_params, 'AdhlRequest');
 
     $this->setCache($cachekey, $ids);
 
@@ -48,6 +52,10 @@ class ADHLServer extends webServiceServer {
   }
 
 
+  /** topTenRequest
+   * @param $params
+   * @return stdClass
+   */
   public function topTenRequest($params) {
 
     $records=$this->topTenRequestMethod($params,$this->watch);
@@ -56,7 +64,11 @@ class ADHLServer extends webServiceServer {
   }
 
 
-
+  /** The function handling the request
+   * @param $params
+   * @param $watch
+   * @return array
+   */
   private function topTenRequestMethod($params,$watch) {
     $query_params = array();
 
@@ -68,8 +80,11 @@ class ADHLServer extends webServiceServer {
     return ( !isset($ids) || empty($ids) ) ? array() : $ids;
   }
 
-
-
+  /** Generic request method. Makes a pg connection and returns the result
+   * @param $params
+   * @param $request
+   * @return array
+   */
   private function request($params, $request) {
     $connection = $this->config->get_value("CONNECTION");
     $db = new pg_db($connection, $this->watch);
@@ -77,7 +92,11 @@ class ADHLServer extends webServiceServer {
 
   }
 
-
+  /** Generic response processor. Wraps a request result into a valid response object
+   * @param $records
+   * @param $responseWrapper
+   * @return stdClass
+   */
   private function response($records, $responseWrapper){
     $response = new stdClass();
 
@@ -89,6 +108,11 @@ class ADHLServer extends webServiceServer {
     return $response;
   }
 
+  /** Get cache if it exists
+   * @param $cachekey
+   * @param $params
+   * @return array|bool|null|string
+   */
   private function getCache($cachekey, $params){
     if (self::$cache && class_exists('cache')){
       verbose::log(TRACE,"request-key::".$cachekey);
@@ -100,6 +124,11 @@ class ADHLServer extends webServiceServer {
     }
     return null;
   }
+
+  /** Set Cache
+   * @param $cachekey
+   * @param $value
+   */
   private function setCache($cachekey, $value){
     if (!isset($value) || empty($value) || !class_exists('cache') || !self::$cache){
       return;

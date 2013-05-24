@@ -25,9 +25,17 @@ class pg_db {
     }
   }
 
+  /** Generic request method
+   * @param $params
+   * @param $requestMethod
+   * @return array
+   * @throws Exception
+   */
   public function request($params, $requestMethod){
 
-    // TODO: Check if method exists
+    if (!method_exists($this, $requestMethod))
+      throw new Exception($requestMethod . 'is not a valid request method');
+
     $this->$requestMethod($params);
 
     if ( $error=$this->get_error() )
@@ -40,6 +48,9 @@ class pg_db {
     return $ids;
   }
 
+  /** Wrapper for AdhlRequest queries
+   * @param $params
+   */
   private function ADHLRequest($params){
     $this->bind("adhl_request",$params['lid'],SQLT_INT);
 
@@ -54,6 +65,9 @@ class pg_db {
     $this->query($query);
   }
 
+  /** Wrapper for topADHLRequest queries
+   * @param $params
+   */
   private function topADHLRequest($params){
     $numRecords= isset($params['numRecords']) ? $params['numRecords'] : 10;
     define('PG_TABLE', 'laan');
@@ -63,11 +77,18 @@ class pg_db {
     $this->query($query);
   }
 
-
+  /** Bind parameters
+   * @param $name
+   * @param $value
+   * @param int $type
+   */
   function bind($name,$value,$type=SQLT_CHR) {
     $this->pg->bind($name, $value, -1, $type);
   }
 
+  /** Set query
+   * @param $query
+   */
   function query($query) {
 
     try {

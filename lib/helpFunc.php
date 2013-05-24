@@ -8,6 +8,11 @@
  *  other functions are private
  */
 class helpFunc {
+
+  /** generate cachekey from params
+   * @param $params
+   * @param $cachekey
+   */
   public static function cache_key($params,&$cachekey) {
     foreach( $params as $obj=>$var ) {
       if ( is_object($var->_value) )

@@ -31,8 +31,6 @@ require_once("OLS_class_lib/pg_database_class.php");
 require_once("OLS_class_lib/oci_class.php");
 
 
-
-
 /** include ADHL service classes */
 require_once("lib/ADHLServer.php");
 require_once("lib/pg_db.php");
@@ -45,25 +43,3 @@ $server = new ADHLServer("adhl.ini");
 // handle the request
 $server->handle_request();
 
-
-
-/** TEST REQUEST */
-
-/**
-<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope"
-xmlns:xml="http://www.w3.org/XML/1998/namespace"
-xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
-xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
-xmlns:types="http://oss.dbc.dk/ns/adhl"
-xmlns:xs="http://www.w3.org/2001/XMLSchema">
-<SOAP-ENV:Body>
-<types:adhlRequest>
-<types:id>
-<types:pid>870970-basis:04231066</types:pid>
-</types:id>
-<types:numRecords>5</types:numRecords>
-</types:adhlRequest>
-</SOAP-ENV:Body>
-</SOAP-ENV:Envelope>
-
- **/

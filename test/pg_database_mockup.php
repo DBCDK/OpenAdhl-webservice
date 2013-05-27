@@ -24,6 +24,7 @@ class pg_database
         $this->set_adhl_result();
         break;
       case 'top_ten_request' :
+        $this->set_top_ten_results();
         break;
     }
 
@@ -68,6 +69,83 @@ class pg_database
 
       array_splice($this->result, $this->params[1], 5-$this->params[1]);
     }
+    $this->params = array();
+  }
+
+  private function set_top_ten_results(){
+      $this->result = array
+      (
+        0 => array
+        (
+          'lid' => '28088078',
+          'lok' => '710100',
+          'count' => '3936'
+        ),
+        1 => array
+        (
+          'lid' => '28186061',
+          'lok' => '710100',
+          'count' => '2705'
+        ),
+
+        2 => array
+        (
+          'lid' => '27670806',
+          'lok' => '775100',
+          'count' => '2677'
+        ),
+
+        3 => array
+        (
+          'lid' => '28186061',
+          'lok' => '775100',
+          'count' => '2667'
+        ),
+
+        4 => array
+        (
+          'lid' => '27925715',
+          'lok' => '710100',
+          'count' => '2411'
+        ),
+
+        5 => array
+        (
+          'lid' => '28088078',
+          'lok' => '775100',
+          'count' => '2365'
+        ),
+        6 => array
+        (
+          'lid' => '27670806',
+          'lok' => '775100',
+          'count' => '2677'
+        ),
+
+        7 => array
+        (
+          'lid' => '28186061',
+          'lok' => '775100',
+          'count' => '2667'
+        ),
+
+        8 => array
+        (
+          'lid' => '27925715',
+          'lok' => '710100',
+          'count' => '2411'
+        ),
+
+        9 => array
+        (
+          'lid' => '28088078',
+          'lok' => '775100',
+          'count' => '2365'
+        )
+
+      );
+
+      array_splice($this->result, $this->params[0], 10-$this->params[0]);
     $this->params = array();
   }
 

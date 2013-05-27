@@ -59,7 +59,7 @@ class ADHLServer extends webServiceServer {
   public function topTenRequest($params) {
 
     $records=$this->topTenRequestMethod($params,$this->watch);
-
+    print_r($records);
     return $this->response($records, 'topTenResponse');
   }
 
@@ -69,7 +69,7 @@ class ADHLServer extends webServiceServer {
    * @param $watch
    * @return array
    */
-  private function topTenRequestMethod($params,$watch) {
+  public function topTenRequestMethod($params,$watch) {
     $query_params = array();
 
     if (isset($params->numRecords->_value))

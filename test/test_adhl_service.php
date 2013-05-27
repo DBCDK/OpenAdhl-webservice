@@ -6,14 +6,11 @@ set_include_path(
   dirname(__FILE__) . '/../OLS_class_lib/simpletest' .  PATH_SEPARATOR .
   __DIR__ . '/..');
 
-//require_once('autorun.php');
-//require_once('../server.php');
-
 require_once( 'unit_tester.php');
 require_once( 'reporter.php');
 require_once( 'xml.php');
 
-class TestADHLRequest extends UnitTestCase {
+class TestADHLService extends UnitTestCase {
 
   function setUp(){
     /** include ADHL service classes */
@@ -64,19 +61,19 @@ class TestADHLRequest extends UnitTestCase {
         'lok' => '737600',
       ),
 
-      2 => Array
+      2 => array
       (
         'lid' => '21131598',
         'lok' => '786000',
       ),
 
-      3 => Array
+      3 => array
       (
         'lid' => '21932108',
         'lok' => '758000',
       ),
 
-      4 => Array
+      4 => array
       (
         'lid' => '23534819',
         'lok' => '710100',
@@ -100,6 +97,72 @@ class TestADHLRequest extends UnitTestCase {
     $result = $server->ADHLRequestMethod($params, null);
 
     $this->assertEqual($result, array());
+
+  }
+
+  public function testTopTenRequestFlow() {
+
+    //TODO: Extend mockup to handle top ten requests
+    require_once('pg_database_mockup.php');
+
+    // Create a request object
+    $params = new stdClass();
+    $params->numRecords = new stdClass();
+    $params->numRecords->_namespace = 'http://oss.dbc.dk/ns/adhl';
+    $params->numRecords->_value = 5;
+
+
+    $server = new ADHLServer(dirname(__FILE__) . "/../adhl.ini");
+
+    $result = $server->topTenRequestMethod($params, null);
+
+    $expected_result = array
+    (
+      0 => array
+      (
+        'lid' => '28088078',
+        'lok' => '710100',
+        'count' => '3936'
+      ),
+      1 => array
+      (
+        'lid' => '28186061',
+        'lok' => '710100',
+        'count' => '2705'
+      ),
+
+      2 => array
+      (
+        'lid' => '27670806',
+        'lok' => '775100',
+        'count' => '2677'
+      ),
+
+      3 => array
+      (
+        'lid' => '28186061',
+        'lok' => '775100',
+        'count' => '2667'
+      ),
+
+      4 => array
+      (
+        'lid' => '27925715',
+        'lok' => '710100',
+        'count' => '2411'
+      ),
+    );
+
+    // Test if request gives the expected response
+    $this->assertEqual($result, $expected_result);
+
+
+    // Test empty response
+    $params = new stdClass();
+    $result = $server->topTenRequestMethod($params, null);
+
+    $this->assertTrue(count($result) == 10, 'Correct number of results, when request is empty');
+
 
   }
 
@@ -129,19 +192,19 @@ class TestADHLRequest extends UnitTestCase {
         'lok' => '737600',
       ),
 
-      2 => Array
+      2 => array
       (
         'lid' => '21131598',
         'lok' => '786000',
       ),
 
-      3 => Array
+      3 => array
       (
         'lid' => '21932108',
         'lok' => '758000',
       ),
 
-      4 => Array
+      4 => array
       (
         'lid' => '23534819',
         'lok' => '710100',
@@ -255,15 +318,12 @@ class TestADHLRequest extends UnitTestCase {
     );
 
     $this->assertEqual($result, $expected_result, 'pid from katalog returns correct lid and lok');
-
-
-
   }
 
 
 }
 
-$test = new TestADHLRequest();
+$test = new TestADHLService();
 $test->run(new XmlReporter());
 
 

@@ -70,9 +70,8 @@ class pg_db {
    */
   private function topADHLRequest($params){
     $numRecords= isset($params['numRecords']) ? $params['numRecords'] : 10;
-    define('PG_TABLE', 'laan');
-    $this->bind("top_ten",$numRecords, SQLT_INT);
-    $query = 'select lokalid as lid, count(lokalid) as count from '.PG_TABLE.' where laan_i_klynge in( select distinct laan_i_klynge from '.PG_TABLE.' order by laan_i_klynge desc limit $1 ) group by lid order by count desc';
+    $this->bind("top_ten_request",$numRecords, SQLT_INT);
+    $query = 'select lokalid as lid, laant_pa_bibliotek as lok, count(lokalid) as count from laan where laan_i_klynge in( select distinct laan_i_klynge from laan order by laan_i_klynge desc limit $1 ) group by lid, lok order by count desc limit $1';
 
     $this->query($query);
   }

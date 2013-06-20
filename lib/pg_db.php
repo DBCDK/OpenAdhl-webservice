@@ -52,15 +52,15 @@ class pg_db {
    * @param $params
    */
   private function ADHLRequest($params){
-    $this->bind("adhl_request",$params['lid'],SQLT_INT);
+    //$this->bind("adhl_request",$params['lid'],SQLT_INT);
 
-    $numRecords= isset($params['numRecords']) ? $params['numRecords'] : 5;
+    $lid = $params['lid'];
+    $limit = isset($params['numRecords']) ? $params['numRecords'] : 5;
+    // $this->bind("adhl_request",$numRecords,SQLT_INT);
 
-    $this->bind("adhl_request",$numRecords,SQLT_INT);
+    $query = "SELECT min(laant_pa_bibliotek) as lok, lokalid as lid, count(*) from laan where lokalid <> '%u' and laanerid in (SELECT distinct laanerid FROM laan WHERE lokalid = '%u') group by lokalid order by count(*) desc limit %u";
+    $query = sprintf($query,$lid,$lid,$limit);
 
-
-    $foo = "select lokalid as lid, count(*) as count from laan where laanerid in (select laanerid from laan where lokalid=$1 order by laan_i_klynge desc limit 500 ) and lokalid != $1 group by lokalid order by count desc limit $2";
-    $query =  "select distinct on (laan.lokalid) laan.lokalid as lid, laan.laant_pa_bibliotek as lok from ($foo) as lids left join laan on lid=lids.lid where lokalid in (select lid from ($foo) as foo) group by lok, laan.lokalid limit $2";
 
     $this->query($query);
   }

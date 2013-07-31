@@ -1,0 +1,3 @@
+s/$localhost/localhost/
+s/$port/11211/
+s/$time/600/

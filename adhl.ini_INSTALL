@@ -1,11 +1,16 @@
-; Inifile for adhl                                                                                                     
+; Inifile for adhl
 ;settings for adhl_server
 [setup]
 ; wsdl for service
 wsdl = adhl.wsdl
 
 ;version
-version = 1.1
+version = 3.0
+
+; memcache
+cache_host = $localhost
+cache_port = $port
+cache_expire = $time
 
 ;in_house domain
 in_house_domain=dbc.dk
@@ -13,27 +18,28 @@ in_house_domain=dbc.dk
 ; actions
 soapAction[ADHLRequest]=adhlRequest
 soapAction[topTenRequest]=topTenRequest
+soapAction[pingRequest]=pingRequest
 
 ; logfile for verbose output
-logfile = /tmp/nypunkt_pjo/adhl.log
+logfile = $logfile
 
 ; set verboselevel
 ;   WARNING - simple warnings
 ;   ERROR   - errors in response
-;   FATAL   - major errors      
+;   FATAL   - major errors
 ;   STAT    - Statístical logging
-;   TIMER   - timer logging      
-;   TRACE   - program trace      
-;   DEBUG   - debugging info     
+;   TIMER   - timer logging
+;   TRACE   - program trace
+;   DEBUG   - debugging info
 ;   Z3959   - calls to z3950 services
-;   OCI     - oracle                 
+;   OCI     - oracle
 verbose = WARNING+ERROR+FATAL+STAT+TIMER+TRACE+DEBUG+Z3950
 
 ;php file for classmap
 ;classes = ADHL_classes.php
 
 ;baseurl for curl
-baseurl=http://vision.dbc.dk/~pjo/OpenLibrary/OpenAdhl/trunk/server.php
+;baseurl=http://guesstimate.dbc.dk/~hhl/OpenAdhl/server.php
 
 xmlns[xml] = http://www.w3.org/XML/1998/namespace
 xmlns[wsdl] = http://schemas.xmlsoap.org/wsdl/
@@ -61,28 +67,30 @@ VIP_PW=
 VIP_DB=
 ;TABLE=temp
 TABLE=laan
-PG_TABLE=laan
+; PG_TABLE=laan
+
+CONNECTION=host=$host port=5433 dbname=adhl user=$user password=$password
 
 
 
 [rest]
 ; valid parameters for rest-request
-action[ADHLRequest][id][]=faust
-action[ADHLRequest][id][]=isbn
-action[ADHLRequest][id][localId][]=lok
-action[ADHLRequest][id][localId][]=lid
-action[ADHLRequest][dateInterval][]=from
-action[ADHLRequest][dateInterval][]=to
-action[ADHLRequest][age][]=minAge
-action[ADHLRequest][age][]=maxAge	
-action[ADHLRequest][]=numRecords
-action[ADHLRequest][]=sex
+;action[ADHLRequest][id][]=faust
+;action[ADHLRequest][id][]=isbn
+;action[ADHLRequest][id][localId][]=lok
+;action[ADHLRequest][id][localId][]=lid
+;action[ADHLRequest][dateInterval][]=from
+;action[ADHLRequest][dateInterval][]=to
+;action[ADHLRequest][age][]=minAge
+;action[ADHLRequest][age][]=maxAge
+;action[ADHLRequest][]=numRecords
+;action[ADHLRequest][]=sex
 
-action[topTenRequest][id][localId][]=lok
-action[topTenRequest][id][localId][]=lid
-action[topTenRequest][id][]=faust
-action[topTenRequest][id][]=isbn
-action[topTenRequest][] = numRecords
+;action[topTenRequest][id][localId][]=lok
+;action[topTenRequest][id][localId][]=lid
+;action[topTenRequest][id][]=faust
+;action[topTenRequest][id][]=isbn
+;action[topTenRequest][] = numRecords
 
 action[ALL][] = outputType
 action[ALL][] = callback

@@ -1,0 +1,858 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project activeEnvironment="Default" name="openadhl" resourceRoot="" soapui-version="4.5.2" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="topTenBinding" type="wsdl" bindingName="{http://oss.dbc.dk/ns/adhl}topTenBinding" soapVersion="1_1" anonymous="optional" definition="http://guesstimate.dbc.dk/~hhl/OpenAdhl/adhl.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://guesstimate.dbc.dk/~hhl/OpenAdhl/adhl.wsdl"><con:part><con:url>http://guesstimate.dbc.dk/~hhl/OpenAdhl/adhl.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="adhlDefinition" targetNamespace="http://oss.dbc.dk/ns/adhl" xmlns:types="http://oss.dbc.dk/ns/adhl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation>This file is part of OpenLibrary.
+        Copyright © 2009, Dansk Bibliotekscenter a/s,  Tempovej 7-11, DK-2750 Ballerup, Denmark. CVR: 15149043
+
+        OpenADHL is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+        OpenADHL is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+
+        You should have received a copy of the GNU Affero General Public License along with OpenADHL.  If not, see http://www.gnu.org/licenses</wsdl:documentation>
+  <wsdl:types>
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://oss.dbc.dk/ns/adhl" schemaLocation="adhl.xsd"/>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="RequestADHL">
+    <wsdl:part name="input" element="types:adhlRequest"/>
+  </wsdl:message>
+  <wsdl:message name="ResponseADHL">
+    <wsdl:part name="output" element="types:adhlResponse"/>
+  </wsdl:message>
+  <wsdl:message name="requestTopTen">
+    <wsdl:part name="input" element="types:topTenRequest"/>
+  </wsdl:message>
+  <wsdl:message name="responseTopTen">
+    <wsdl:part name="output" element="types:topTenResponse"/>
+  </wsdl:message>
+  <wsdl:message name="requestPing">
+    <wsdl:part name="input" element="types:pingRequest"/>
+  </wsdl:message>
+  <wsdl:message name="responsePing">
+    <wsdl:part name="output" element="types:pingResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="ADHLPortType">
+    <wsdl:operation name="ADHLRequest">
+      <wsdl:input message="types:RequestADHL"/>
+      <wsdl:output message="types:ResponseADHL"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ADHLBinding" type="types:ADHLPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="ADHLRequest">
+      <soap:operation soapAction="ADHLRequest"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:portType name="topTenPortType">
+    <wsdl:operation name="topTenRequest">
+      <wsdl:input message="types:requestTopTen"/>
+      <wsdl:output message="types:responseTopTen"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="topTenBinding" type="types:topTenPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="topTenRequest">
+      <soap:operation soapAction="topTenRequest"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:portType name="pingPortType">
+    <wsdl:operation name="pingRequest">
+      <wsdl:input message="types:requestPing"/>
+      <wsdl:output message="types:responsePing"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="pingBinding" type="types:pingPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="pingRequest">
+      <soap:operation soapAction="pingRequest"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ADHL">
+    <wsdl:port name="ADHLPort" binding="types:ADHLBinding">
+      <soap:address location="http://guesstimate.dbc.dk/~hhl/OpenAdhl/server.php"/>
+    </wsdl:port>
+    <wsdl:port name="topTenPort" binding="types:topTenBinding">
+      <soap:address location="http://guesstimate.dbc.dk/~hhl/OpenAdhl/server.php"/>
+    </wsdl:port>
+    <wsdl:port name="pingPort" binding="types:pingBinding">
+      <soap:address location="http://guesstimate.dbc.dk/~hhl/OpenAdhl/server.php"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>http://guesstimate.dbc.dk/~hhl/OpenAdhl/adhl.xsd</con:url><con:content><![CDATA[<xs:schema targetNamespace="http://oss.dbc.dk/ns/adhl" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:types="http://oss.dbc.dk/ns/adhl">
+  <xs:annotation>
+    <xs:documentation xml:lang="eng">This file is part of OpenSearch.
+            Copyright © 2009, Dansk Bibliotekscenter a/s,  Tempovej 7-11, DK-2750 Ballerup, Denmark. CVR: 15149043
+
+            OpenSearch is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+            OpenSearch is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+
+            You should have received a copy of the GNU Affero General Public License along with OpenSearch.  If not, see http://www.gnu.org/licenses/</xs:documentation>
+  </xs:annotation>
+  <xs:element name="adhlRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="types:id"/>
+        <xs:element ref="types:numRecords" minOccurs="0"/>
+        <!--<xs:element ref="types:sex" minOccurs="0"/>
+                <xs:element ref="types:age" minOccurs="0"/>
+                <xs:element ref="types:dateInterval" minOccurs="0"/>-->
+        <xs:element ref="types:outputType" minOccurs="0"/>
+        <xs:element ref="types:callback" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="adhlResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="types:pid" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="types:error" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="topTenRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="types:numRecords" minOccurs="0"/>
+        <xs:element ref="types:outputType" minOccurs="0"/>
+        <xs:element ref="types:callback" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="topTenResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="types:record" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="types:error" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="pingRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="types:id"/>
+        <!--<xs:element ref="types:numRecords" minOccurs="0"/>
+                <xs:element ref="types:sex" minOccurs="0"/>
+                <xs:element ref="types:age" minOccurs="0"/>
+                <xs:element ref="types:dateInterval" minOccurs="0"/>-->
+        <xs:element ref="types:outputType" minOccurs="0"/>
+        <xs:element ref="types:callback" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="pingResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="types:pid" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="types:error" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="age">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="types:minAge"/>
+        <xs:element ref="types:maxAge"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="dateInterval">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="types:from"/>
+        <xs:element ref="types:to"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="id">
+    <xs:complexType>
+      <xs:sequence>
+        <!--<xs:element ref="types:localId"/>-->
+        <xs:element ref="types:pid" minOccurs="1" maxOccurs="unbounded"/>
+        <!--<xs:element ref="types:isbn"/>
+                <xs:element ref="types:faust"/>-->
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="record">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="types:url" minOccurs="0"/>
+        <xs:element ref="types:recordId"/>
+        <xs:element ref="types:identifier" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="types:creator" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="types:alternativeName" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="types:title" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="types:alternative" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="types:description" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="types:type" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="types:rankValue" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="localId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="types:lok"/>
+        <xs:element ref="types:lid"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="alternative" type="xs:string"/>
+  <xs:element name="alternativeName" type="xs:string"/>
+  <xs:element name="callback" type="xs:string"/>
+  <xs:element name="creator" type="xs:string"/>
+  <xs:element name="description" type="xs:string"/>
+  <xs:element name="error" type="xs:string"/>
+  <xs:element name="faust" type="xs:string"/>
+  <xs:element name="from" type="xs:date"/>
+  <xs:element name="identifier" type="xs:string"/>
+  <xs:element name="pid" type="xs:string"/>
+  <xs:element name="isbn" type="xs:string"/>
+  <xs:element name="lid" type="xs:string"/>
+  <xs:element name="lok" type="xs:integer"/>
+  <xs:element name="maxAge" type="xs:integer"/>
+  <xs:element name="minAge" type="xs:integer"/>
+  <xs:element name="numRecords" type="xs:integer"/>
+  <xs:element name="outputType" type="types:outputType"/>
+  <xs:element name="rankValue" type="xs:string"/>
+  <xs:element name="recordId" type="xs:string"/>
+  <xs:element name="sex" type="types:sexType"/>
+  <xs:element name="title" type="xs:string"/>
+  <xs:element name="to" type="xs:date"/>
+  <xs:element name="type" type="xs:string"/>
+  <xs:element name="url" type="xs:string"/>
+  <xs:simpleType name="outputType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="XML"/>
+      <xs:enumeration value="JSON"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="sexType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="m"/>
+      <xs:enumeration value="k"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://guesstimate.dbc.dk/~hhl/OpenAdhl/server.php</con:endpoint></con:endpoints><con:operation isOneWay="false" action="topTenRequest" name="topTenRequest" bindingOperationName="topTenRequest" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://guesstimate.dbc.dk/~hhl/OpenAdhl/server.php</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:adhl="http://oss.dbc.dk/ns/adhl">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <adhl:topTenRequest>
+         <!--Optional:-->
+         <adhl:numRecords>?</adhl:numRecords>
+         <!--Optional:-->
+         <adhl:outputType>?</adhl:outputType>
+         <!--Optional:-->
+         <adhl:callback>?</adhl:callback>
+      </adhl:topTenRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:wsaConfig mustUnderstand="NONE" version="200508" action="topTenRequest"/></con:call><con:call name="Top20"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://guesstimate.dbc.dk/~hhl/OpenAdhl/server.php</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:adhl="http://oss.dbc.dk/ns/adhl">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <adhl:topTenRequest>
+         <!--Optional:-->
+         <adhl:numRecords>20</adhl:numRecords>
+         <adhl:outputType>XML</adhl:outputType>
+         <!--Optional:-->
+         <adhl:callback>?</adhl:callback>
+      </adhl:topTenRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="topTenRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="ADHLBinding" type="wsdl" bindingName="{http://oss.dbc.dk/ns/adhl}ADHLBinding" soapVersion="1_1" anonymous="optional" definition="http://guesstimate.dbc.dk/~hhl/OpenAdhl/adhl.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache/><con:endpoints><con:endpoint>http://guesstimate.dbc.dk/~hhl/OpenAdhl/server.php</con:endpoint></con:endpoints><con:operation isOneWay="false" action="ADHLRequest" name="ADHLRequest" bindingOperationName="ADHLRequest" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://guesstimate.dbc.dk/~hhl/OpenAdhl/server.php</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:adhl="http://oss.dbc.dk/ns/adhl">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <adhl:adhlRequest>
+         <adhl:id>
+            <!--1 or more repetitions:-->
+            <adhl:pid>870970-basis:04231066</adhl:pid>
+         </adhl:id>
+         <!--Optional:-->
+         
+         <!--Optional:-->
+         <adhl:numRecords>5</adhl:numRecords><adhl:outputType>XML</adhl:outputType>
+         <!--Optional:-->
+         <adhl:callback>?</adhl:callback>
+      </adhl:adhlRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="ADHLRequest"/><con:wsrmConfig version="1.2"/></con:call><con:call name="Dette burde skrives i nutid"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://guesstimate.dbc.dk/~hhl/OpenAdhl/server.php</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:adhl="http://oss.dbc.dk/ns/adhl">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <adhl:adhlRequest>
+         <adhl:id>
+            <!--1 or more repetitions:-->
+            <adhl:pid>870970-basis:29938768</adhl:pid>
+            <adhl:pid>870970-basis:29938768</adhl:pid>
+            <adhl:pid>870970-basis:28752784</adhl:pid>
+            <adhl:pid>870970-basis:29039577</adhl:pid>
+            <adhl:pid>870970-basis:28849400</adhl:pid>
+         </adhl:id>
+         <!--Optional:-->
+         <adhl:numRecords>5</adhl:numRecords>
+         <!--Optional:-->
+         <adhl:outputType>XML</adhl:outputType>
+         <!--Optional:-->
+         <adhl:callback>?</adhl:callback>
+      </adhl:adhlRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="ADHLRequest"/><con:wsrmConfig version="1.2"/></con:call><con:call name="Kun 0 laanere"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://guesstimate.dbc.dk/~hhl/OpenAdhl/server.php</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:adhl="http://oss.dbc.dk/ns/adhl">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <adhl:adhlRequest>
+         <adhl:id>
+            <!--You have a CHOICE of the next 4 items at this level-->
+            
+            <!--1 or more repetitions:-->
+            <adhl:pid>870970-basis:3232323</adhl:pid>
+           
+         </adhl:id>
+         <!--Optional:-->
+         
+         <!--Optional:-->
+         <adhl:numRecords>5</adhl:numRecords><adhl:sex>?</adhl:sex>
+         <!--Optional:-->
+         <adhl:age>
+            <adhl:minAge>?</adhl:minAge>
+            <adhl:maxAge>?</adhl:maxAge>
+         </adhl:age>
+         <!--Optional:-->
+         <adhl:dateInterval>
+            <adhl:from>?</adhl:from>
+            <adhl:to>?</adhl:to>
+         </adhl:dateInterval>
+         <!--Optional:-->
+         <adhl:outputType>XML</adhl:outputType>
+         <!--Optional:-->
+         <adhl:callback>?</adhl:callback>
+      </adhl:adhlRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="ADHLRequest"/><con:wsrmConfig version="1.2"/></con:call><con:call name="Kun 1 laaner"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://guesstimate.dbc.dk/~hhl/OpenAdhl/server.php</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:adhl="http://oss.dbc.dk/ns/adhl">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <adhl:adhlRequest>
+         <adhl:id>
+            <!--You have a CHOICE of the next 4 items at this level-->
+            
+            <!--1 or more repetitions:-->
+            <adhl:pid>870970-basis:22376454</adhl:pid>
+           
+         </adhl:id>
+         <!--Optional:-->
+         
+         <!--Optional:-->
+         <adhl:numRecords>5</adhl:numRecords><adhl:sex>?</adhl:sex>
+         <!--Optional:-->
+         <adhl:age>
+            <adhl:minAge>?</adhl:minAge>
+            <adhl:maxAge>?</adhl:maxAge>
+         </adhl:age>
+         <!--Optional:-->
+         <adhl:dateInterval>
+            <adhl:from>?</adhl:from>
+            <adhl:to>?</adhl:to>
+         </adhl:dateInterval>
+         <!--Optional:-->
+         <adhl:outputType>XML</adhl:outputType>
+         <!--Optional:-->
+         <adhl:callback>?</adhl:callback>
+      </adhl:adhlRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="ADHLRequest"/><con:wsrmConfig version="1.2"/></con:call><con:call name="Kun 2 laanere"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://guesstimate.dbc.dk/~hhl/OpenAdhl/server.php</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:adhl="http://oss.dbc.dk/ns/adhl">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <adhl:adhlRequest>
+         <adhl:id>
+            <!--1 or more repetitions:-->
+            <adhl:pid>870970-basis:23521512</adhl:pid>
+         </adhl:id>
+         <!--Optional:-->
+         <adhl:numRecords>5</adhl:numRecords>
+         <adhl:sex>?</adhl:sex>
+         <!--Optional:-->
+         <adhl:outputType>XML</adhl:outputType>
+         <!--Optional:-->
+         <adhl:callback>?</adhl:callback>
+      </adhl:adhlRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="ADHLRequest"/><con:wsrmConfig version="1.2"/></con:call><con:call name="Kun 3 laanere"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://guesstimate.dbc.dk/~hhl/OpenAdhl/server.php</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:adhl="http://oss.dbc.dk/ns/adhl">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <adhl:adhlRequest>
+         <adhl:id>
+            <!--You have a CHOICE of the next 4 items at this level-->
+            
+            <!--1 or more repetitions:-->
+            <adhl:pid>870970-basis:23547201</adhl:pid>
+           
+         </adhl:id>
+         <!--Optional:-->
+         
+         <!--Optional:-->
+         <adhl:numRecords>5</adhl:numRecords><adhl:sex>?</adhl:sex>
+         <!--Optional:-->
+         <adhl:age>
+            <adhl:minAge>?</adhl:minAge>
+            <adhl:maxAge>?</adhl:maxAge>
+         </adhl:age>
+         <!--Optional:-->
+         <adhl:dateInterval>
+            <adhl:from>?</adhl:from>
+            <adhl:to>?</adhl:to>
+         </adhl:dateInterval>
+         <!--Optional:-->
+         <adhl:outputType>XML</adhl:outputType>
+         <!--Optional:-->
+         <adhl:callback>?</adhl:callback>
+      </adhl:adhlRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="ADHLRequest"/><con:wsrmConfig version="1.2"/></con:call><con:call name="Peder Pedal"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://guesstimate.dbc.dk/~hhl/OpenAdhl/server.php</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:adhl="http://oss.dbc.dk/ns/adhl">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <adhl:adhlRequest>
+         <adhl:id>
+            <!--1 or more repetitions:-->
+            <adhl:pid>870970-basis:29267979</adhl:pid>
+         </adhl:id>
+         <!--Optional:-->
+         <adhl:numRecords>5</adhl:numRecords>
+         <!--Optional:-->
+         <adhl:outputType>XML</adhl:outputType>
+         <!--Optional:-->
+         <adhl:callback>?</adhl:callback>
+      </adhl:adhlRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="ADHLRequest"/><con:wsrmConfig version="1.2"/></con:call><con:call name="Journal 64"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://guesstimate.dbc.dk/~hhl/OpenAdhl/server.php</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:adhl="http://oss.dbc.dk/ns/adhl">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <adhl:adhlRequest>
+         <adhl:id>
+            <adhl:pid>870970-basis:29726795</adhl:pid>
+            <adhl:pid>870970-basis:29028877</adhl:pid>
+            <adhl:pid>870970-basis:29145075</adhl:pid>
+            <adhl:pid>870970-basis:29145083</adhl:pid>
+            <adhl:pid>870970-basis:28511663</adhl:pid>
+            <adhl:pid>870970-basis:29060649</adhl:pid>
+            <adhl:pid>870970-basis:28634560</adhl:pid>
+            <adhl:pid>870970-basis:29716560</adhl:pid>
+         </adhl:id>
+         <!--Optional:-->
+         <!--Optional:-->
+         <adhl:numRecords>5</adhl:numRecords>
+         <adhl:sex>?</adhl:sex>
+         <!--Optional:-->
+         <adhl:age>
+            <adhl:minAge>?</adhl:minAge>
+            <adhl:maxAge>?</adhl:maxAge>
+         </adhl:age>
+         <!--Optional:-->
+         <adhl:dateInterval>
+            <adhl:from>?</adhl:from>
+            <adhl:to>?</adhl:to>
+         </adhl:dateInterval>
+         <!--Optional:-->
+         <adhl:outputType>xml</adhl:outputType>
+         <!--Optional:-->
+         <adhl:callback>?</adhl:callback>
+      </adhl:adhlRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="ADHLRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="pingBinding" type="wsdl" bindingName="{http://oss.dbc.dk/ns/adhl}pingBinding" soapVersion="1_1" anonymous="optional" definition="http://guesstimate.dbc.dk/~hhl/OpenAdhl/adhl.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://guesstimate.dbc.dk/~hhl/OpenAdhl/adhl.wsdl"><con:part><con:url>http://guesstimate.dbc.dk/~hhl/OpenAdhl/adhl.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="adhlDefinition" targetNamespace="http://oss.dbc.dk/ns/adhl" xmlns:types="http://oss.dbc.dk/ns/adhl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation>This file is part of OpenLibrary.
+        Copyright © 2009, Dansk Bibliotekscenter a/s,  Tempovej 7-11, DK-2750 Ballerup, Denmark. CVR: 15149043
+
+        OpenADHL is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+        OpenADHL is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+
+        You should have received a copy of the GNU Affero General Public License along with OpenADHL.  If not, see http://www.gnu.org/licenses</wsdl:documentation>
+  <wsdl:types>
+    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://oss.dbc.dk/ns/adhl" schemaLocation="adhl.xsd"/>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="RequestADHL">
+    <wsdl:part name="input" element="types:adhlRequest"/>
+  </wsdl:message>
+  <wsdl:message name="ResponseADHL">
+    <wsdl:part name="output" element="types:adhlResponse"/>
+  </wsdl:message>
+  <wsdl:message name="requestTopTen">
+    <wsdl:part name="input" element="types:topTenRequest"/>
+  </wsdl:message>
+  <wsdl:message name="responseTopTen">
+    <wsdl:part name="output" element="types:topTenResponse"/>
+  </wsdl:message>
+  <wsdl:message name="requestPing">
+    <wsdl:part name="input" element="types:pingRequest"/>
+  </wsdl:message>
+  <wsdl:message name="responsePing">
+    <wsdl:part name="output" element="types:pingResponse"/>
+  </wsdl:message>
+  <wsdl:portType name="ADHLPortType">
+    <wsdl:operation name="ADHLRequest">
+      <wsdl:input message="types:RequestADHL"/>
+      <wsdl:output message="types:ResponseADHL"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ADHLBinding" type="types:ADHLPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="ADHLRequest">
+      <soap:operation soapAction="ADHLRequest"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:portType name="topTenPortType">
+    <wsdl:operation name="topTenRequest">
+      <wsdl:input message="types:requestTopTen"/>
+      <wsdl:output message="types:responseTopTen"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="topTenBinding" type="types:topTenPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="topTenRequest">
+      <soap:operation soapAction="topTenRequest"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:portType name="pingPortType">
+    <wsdl:operation name="pingRequest">
+      <wsdl:input message="types:requestPing"/>
+      <wsdl:output message="types:responsePing"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="pingBinding" type="types:pingPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="pingRequest">
+      <soap:operation soapAction="pingRequest"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ADHL">
+    <wsdl:port name="ADHLPort" binding="types:ADHLBinding">
+      <soap:address location="http://guesstimate.dbc.dk/~hhl/OpenAdhl/server.php"/>
+    </wsdl:port>
+    <wsdl:port name="topTenPort" binding="types:topTenBinding">
+      <soap:address location="http://guesstimate.dbc.dk/~hhl/OpenAdhl/server.php"/>
+    </wsdl:port>
+    <wsdl:port name="pingPort" binding="types:pingBinding">
+      <soap:address location="http://guesstimate.dbc.dk/~hhl/OpenAdhl/server.php"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>http://guesstimate.dbc.dk/~hhl/OpenAdhl/adhl.xsd</con:url><con:content><![CDATA[<xs:schema targetNamespace="http://oss.dbc.dk/ns/adhl" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:types="http://oss.dbc.dk/ns/adhl">
+  <xs:annotation>
+    <xs:documentation xml:lang="eng">This file is part of OpenSearch.
+            Copyright © 2009, Dansk Bibliotekscenter a/s,  Tempovej 7-11, DK-2750 Ballerup, Denmark. CVR: 15149043
+
+            OpenSearch is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
+
+            OpenSearch is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Affero General Public License for more details.
+
+            You should have received a copy of the GNU Affero General Public License along with OpenSearch.  If not, see http://www.gnu.org/licenses/</xs:documentation>
+  </xs:annotation>
+  <xs:element name="adhlRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="types:id"/>
+        <xs:element ref="types:numRecords" minOccurs="0"/>
+        <!--<xs:element ref="types:sex" minOccurs="0"/>
+                <xs:element ref="types:age" minOccurs="0"/>
+                <xs:element ref="types:dateInterval" minOccurs="0"/>-->
+        <xs:element ref="types:outputType" minOccurs="0"/>
+        <xs:element ref="types:callback" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="adhlResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="types:pid" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="types:error" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="topTenRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="types:numRecords" minOccurs="0"/>
+        <xs:element ref="types:outputType" minOccurs="0"/>
+        <xs:element ref="types:callback" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="topTenResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="types:record" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="types:error" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="pingRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="types:id"/>
+        <!--<xs:element ref="types:numRecords" minOccurs="0"/>
+                <xs:element ref="types:sex" minOccurs="0"/>
+                <xs:element ref="types:age" minOccurs="0"/>
+                <xs:element ref="types:dateInterval" minOccurs="0"/>-->
+        <xs:element ref="types:outputType" minOccurs="0"/>
+        <xs:element ref="types:callback" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="pingResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="types:pid" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="types:error" minOccurs="0"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="age">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="types:minAge"/>
+        <xs:element ref="types:maxAge"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="dateInterval">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="types:from"/>
+        <xs:element ref="types:to"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="id">
+    <xs:complexType>
+      <xs:sequence>
+        <!--<xs:element ref="types:localId"/>-->
+        <xs:element ref="types:pid" minOccurs="1" maxOccurs="unbounded"/>
+        <!--<xs:element ref="types:isbn"/>
+                <xs:element ref="types:faust"/>-->
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="record">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="types:url" minOccurs="0"/>
+        <xs:element ref="types:recordId"/>
+        <xs:element ref="types:identifier" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="types:creator" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="types:alternativeName" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="types:title" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="types:alternative" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="types:description" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="types:type" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:element ref="types:rankValue" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="localId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="types:lok"/>
+        <xs:element ref="types:lid"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="alternative" type="xs:string"/>
+  <xs:element name="alternativeName" type="xs:string"/>
+  <xs:element name="callback" type="xs:string"/>
+  <xs:element name="creator" type="xs:string"/>
+  <xs:element name="description" type="xs:string"/>
+  <xs:element name="error" type="xs:string"/>
+  <xs:element name="faust" type="xs:string"/>
+  <xs:element name="from" type="xs:date"/>
+  <xs:element name="identifier" type="xs:string"/>
+  <xs:element name="pid" type="xs:string"/>
+  <xs:element name="isbn" type="xs:string"/>
+  <xs:element name="lid" type="xs:string"/>
+  <xs:element name="lok" type="xs:integer"/>
+  <xs:element name="maxAge" type="xs:integer"/>
+  <xs:element name="minAge" type="xs:integer"/>
+  <xs:element name="numRecords" type="xs:integer"/>
+  <xs:element name="outputType" type="types:outputType"/>
+  <xs:element name="rankValue" type="xs:string"/>
+  <xs:element name="recordId" type="xs:string"/>
+  <xs:element name="sex" type="types:sexType"/>
+  <xs:element name="title" type="xs:string"/>
+  <xs:element name="to" type="xs:date"/>
+  <xs:element name="type" type="xs:string"/>
+  <xs:element name="url" type="xs:string"/>
+  <xs:simpleType name="outputType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="XML"/>
+      <xs:enumeration value="JSON"/>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="sexType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="m"/>
+      <xs:enumeration value="k"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>]]></con:content><con:type>http://www.w3.org/2001/XMLSchema</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://guesstimate.dbc.dk/~hhl/OpenAdhl/server.php</con:endpoint></con:endpoints><con:operation isOneWay="false" action="pingRequest" name="pingRequest" bindingOperationName="pingRequest" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://guesstimate.dbc.dk/~hhl/OpenAdhl/server.php</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:adhl="http://oss.dbc.dk/ns/adhl">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <adhl:pingRequest>
+         <adhl:id>
+            <!--1 or more repetitions:-->
+            <adhl:pid>?</adhl:pid>
+         </adhl:id>
+         <!--Optional:-->
+         <adhl:outputType>?</adhl:outputType>
+         <!--Optional:-->
+         <adhl:callback>?</adhl:callback>
+      </adhl:pingRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:wsaConfig mustUnderstand="NONE" version="200508" action="pingRequest"/></con:call><con:call name="Peder Pedal"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://guesstimate.dbc.dk/~hhl/OpenAdhl/server.php</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:adhl="http://oss.dbc.dk/ns/adhl">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <adhl:pingRequest>
+         <adhl:id>
+            <!--1 or more repetitions:-->
+           <adhl:pid>870970-basis:29267979</adhl:pid>
+         </adhl:id>
+         <!--Optional:-->
+         <adhl:outputType>XML</adhl:outputType>
+         <!--Optional:-->
+         <adhl:callback>?</adhl:callback>
+      </adhl:pingRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="pingRequest"/><con:wsrmConfig version="1.2"/></con:call><con:call name="Journal 64"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://guesstimate.dbc.dk/~hhl/OpenAdhl/server.php</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:adhl="http://oss.dbc.dk/ns/adhl">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <adhl:pingRequest>
+         <adhl:id>
+            <!--1 or more repetitions:-->
+            <adhl:pid>870970-basis:29726795</adhl:pid>
+            <adhl:pid>870970-basis:29028877</adhl:pid>
+            <adhl:pid>870970-basis:29145075</adhl:pid>
+            <adhl:pid>870970-basis:29145083</adhl:pid>
+            <adhl:pid>870970-basis:28511663</adhl:pid>
+            <adhl:pid>870970-basis:29060649</adhl:pid>
+            <adhl:pid>870970-basis:28634560</adhl:pid>
+            <adhl:pid>870970-basis:29716560</adhl:pid>
+         </adhl:id>
+         <!--Optional:-->
+         <adhl:outputType>?</adhl:outputType>
+         <!--Optional:-->
+         <adhl:callback>?</adhl:callback>
+      </adhl:pingRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="pingRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:testSuite name="topTenBinding TestSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="topTenRequest TestCase" searchProperties="true"><con:settings/><con:testStep type="request" name="topTenRequest"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>topTenBinding</con:interface><con:operation>topTenRequest</con:operation><con:request name="topTenRequest"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://guesstimate.dbc.dk/~hhl/OpenAdhl/server.php</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:adhl="http://oss.dbc.dk/ns/adhl">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <adhl:topTenRequest>
+         <!--Optional:-->
+         <adhl:numRecords>?</adhl:numRecords>
+         <!--Optional:-->
+         <adhl:outputType>?</adhl:outputType>
+         <!--Optional:-->
+         <adhl:callback>?</adhl:callback>
+      </adhl:topTenRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:wsaConfig action="topTenRequest"/></con:request></con:config></con:testStep><con:properties/><con:reportParameters/></con:testCase><con:properties/><con:reportParameters/></con:testSuite><con:testSuite name="ADHLBinding TestSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="ADHLRequest TestCase" searchProperties="true" id="d2ac411d-08f2-4309-9387-a7b0eba34b0d"><con:settings/><con:testStep type="request" name="ADHLRequest - Journal 64"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ADHLBinding</con:interface><con:operation>ADHLRequest</con:operation><con:request name="ADHLRequest - Journal 64" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://guesstimate.dbc.dk/~hhl/OpenAdhl/server.php</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:adhl="http://oss.dbc.dk/ns/adhl">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <adhl:adhlRequest>
+         <adhl:id>
+            <adhl:pid>870970-basis:29726795</adhl:pid>
+            <adhl:pid>870970-basis:29028877</adhl:pid>
+            <adhl:pid>870970-basis:29145075</adhl:pid>
+            <adhl:pid>870970-basis:29145083</adhl:pid>
+            <adhl:pid>870970-basis:28511663</adhl:pid>
+            <adhl:pid>870970-basis:29060649</adhl:pid>
+            <adhl:pid>870970-basis:28634560</adhl:pid>
+            <adhl:pid>870970-basis:29716560</adhl:pid>
+         </adhl:id>
+         <!--Optional:-->
+         <!--Optional:-->
+         <adhl:numRecords>5</adhl:numRecords>
+         <adhl:sex>?</adhl:sex>
+         <!--Optional:-->
+         <adhl:age>
+            <adhl:minAge>?</adhl:minAge>
+            <adhl:maxAge>?</adhl:maxAge>
+         </adhl:age>
+         <!--Optional:-->
+         <adhl:dateInterval>
+            <adhl:from>?</adhl:from>
+            <adhl:to>?</adhl:to>
+         </adhl:dateInterval>
+         <!--Optional:-->
+         <adhl:outputType>XML</adhl:outputType>
+         <!--Optional:-->
+         <adhl:callback>?</adhl:callback>
+      </adhl:adhlRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" name="SOAP Response"/><con:assertion type="XPath Match" name="Match content of [pid]"><con:configuration><path>declare namespace types='http://oss.dbc.dk/ns/adhl';
+//types:adhlResponse[1]/pid[1]/text()</path><content>870970-basis:27925715</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" name="Response SLA"><con:configuration><SLA>1500</SLA></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="ADHLRequest"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="ADHLRequest - Dette burde skrives i nutid"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ADHLBinding</con:interface><con:operation>ADHLRequest</con:operation><con:request name="ADHLRequest - Dette burde skrives i nutid" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://guesstimate.dbc.dk/~hhl/OpenAdhl/server.php</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:adhl="http://oss.dbc.dk/ns/adhl">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <adhl:adhlRequest>
+         <adhl:id>
+            <!--1 or more repetitions:-->
+            <adhl:pid>870970-basis:29938768</adhl:pid>
+            <adhl:pid>870970-basis:29938768</adhl:pid>
+            <adhl:pid>870970-basis:28752784</adhl:pid>
+            <adhl:pid>870970-basis:29039577</adhl:pid>
+            <adhl:pid>870970-basis:28849400</adhl:pid>
+         </adhl:id>
+         <!--Optional:-->
+         <adhl:numRecords>5</adhl:numRecords>
+         <!--Optional:-->
+         <adhl:outputType>XML</adhl:outputType>
+         <!--Optional:-->
+         <adhl:callback>?</adhl:callback>
+      </adhl:adhlRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" name="SOAP Response"/><con:assertion type="XPath Match" name="Match content of [pid]"><con:configuration><path>declare namespace types='http://oss.dbc.dk/ns/adhl';
+//types:adhlResponse[1]/pid[1]/text()</path><content>870970-basis:28204760</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" name="Response SLA"><con:configuration><SLA>2000</SLA></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="ADHLRequest"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/><con:reportParameters/></con:testCase><con:properties/><con:reportParameters/></con:testSuite><con:testSuite name="pingBinding TestSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="pingRequest TestCase" searchProperties="true"><con:settings/><con:testStep type="request" name="pingRequest"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>pingBinding</con:interface><con:operation>pingRequest</con:operation><con:request name="pingRequest"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://guesstimate.dbc.dk/~hhl/OpenAdhl/server.php</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:adhl="http://oss.dbc.dk/ns/adhl">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <adhl:pingRequest>
+         <adhl:id>
+            <!--1 or more repetitions:-->
+            <adhl:pid>?</adhl:pid>
+         </adhl:id>
+         <!--Optional:-->
+         <adhl:outputType>?</adhl:outputType>
+         <!--Optional:-->
+         <adhl:callback>?</adhl:callback>
+      </adhl:pingRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:wsaConfig action="pingRequest"/></con:request></con:config></con:testStep><con:properties/><con:reportParameters/></con:testCase><con:properties/><con:reportParameters/></con:testSuite><con:requirements/><con:properties/><con:wssContainer/><con:databaseConnectionContainer/><con:reporting><con:reportTemplates/><con:xmlTemplates/><con:parameters/></con:reporting><con:sensitiveInformation/></con:soapui-project>

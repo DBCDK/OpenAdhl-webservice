@@ -1,4 +1,5 @@
 <?php
+
 /** include for webservice server */
 require_once("OLS_class_lib/webServiceServer_class.php");
 
@@ -8,9 +9,15 @@ class ADHLServer extends webServiceServer {
 
   public function __construct($inifile) {
     parent::__construct($inifile);
+
+    $config = new inifile($inifile);
+    $host = $config->get_value('cache_host', 'setup');
+    $port = $config->get_value('cache_port', 'setup');
+    $expire = $config->get_value('cache_expire', 'setup');
+    $this->cache = new cache($host, $port, $expire);
+
     $this->watch->start("openadhl");
   }
-
 
   /** ADHLRequest
    * @param $params
@@ -18,7 +25,7 @@ class ADHLServer extends webServiceServer {
    */
   public function ADHLRequest($params) {
 
-    $records=$this->ADHLRequestMethod($params);
+    $records = $this->ADHLRequestMethod($params, 500);
 
     return $this->response($records, 'adhlResponse');
   }
@@ -27,23 +34,50 @@ class ADHLServer extends webServiceServer {
    * @params $params; the request given from soapclient or derived from url-query
    * @return array with response in abm_xml format
    */
-  public function ADHLRequestMethod($params) {
-    if (!isset ($params->id->_value->pid->_value)) {
-      return array();
+  public function ADHLRequestMethod($params, $limit) {
+
+
+    $more_than_one_pid = false;
+    $arr = $params->id->_value->pid;
+    if (is_array($arr)) {
+      $more_than_one_pid = true;
+    }
+    if ($more_than_one_pid) {
+      if (!isset($params->id->_value->pid[0]->_value)) {
+        return array();
+      }
+    }
+    else {
+      if (!isset($params->id->_value->pid->_value)) {
+        return array();
+      }
     }
 
-    $cachekey = 'ADHLRequest_';
-    $cachekey = helpFunc::cache_key($params, $cachekey);
-
-    if ($cache = $this->getCache($cachekey, $params)) {
-      return $cache;
+    $query_params = array();
+    if ($more_than_one_pid) {
+      foreach ($params->id->_value->pid as $pid) {
+        $lokalid = helpFunc::get_lid_and_lok_from_pid($pid->_value);
+        $query_params['pids'][] = $lokalid;
+      }
+    }
+    else {
+      $pid = $params->id->_value->pid->_value;
+      $query_params['pids'][] = helpFunc::get_lid_and_lok_from_pid($pid);
     }
 
-    $pid = $params->id->_value->pid->_value;
-    $query_params = helpFunc::get_lid_and_lok_from_pid($pid);
     if (isset($params->numRecords->_value)) {
       $query_params['numRecords'] = $params->numRecords->_value;
     }
+    $query_params['UserLimit'] = $limit;
+
+    $cachekey = helpFunc::cache_key_2($query_params);
+//    $cachekey = helpFunc::cache_key($params, $cachekey);
+
+
+    if ($cache = $this->getCache($cachekey)) {
+      return $cache;
+    }
+
     $ids = $this->request($query_params, 'AdhlRequest');
 
     $this->setCache($cachekey, $ids);
@@ -51,25 +85,22 @@ class ADHLServer extends webServiceServer {
     return !isset($ids) || empty($ids) ? array() : $ids;
   }
 
-
   /** topTenRequest
    * @param $params
    * @return stdClass
    */
   public function topTenRequest($params) {
 
-    $records=$this->topTenRequestMethod($params,$this->watch);
-    print_r($records);
+    $records = $this->topTenRequestMethod($params, $this->watch);
     return $this->response($records, 'topTenResponse');
   }
-
 
   /** The function handling the request
    * @param $params
    * @param $watch
    * @return array
    */
-  public function topTenRequestMethod($params,$watch) {
+  public function topTenRequestMethod($params, $watch) {
     $query_params = array();
 
     if (isset($params->numRecords->_value))
@@ -77,7 +108,21 @@ class ADHLServer extends webServiceServer {
 
     $ids = $this->request($query_params, 'topADHLRequest');
 
-    return ( !isset($ids) || empty($ids) ) ? array() : $ids;
+    return (!isset($ids) || empty($ids) ) ? array() : $ids;
+  }
+
+  /**
+   * To be used to see if there is any ADHL on this actual prarameters
+   * If yes: returns some id's (not to be used)
+   * If no: returns empty
+   *
+   * @param type $params
+   * @return a list of pid's
+   */
+  public function pingRequest($params) {
+
+    $records = $this->ADHLRequestMethod($params, 1);
+    return $this->response($records, 'adhlResponse');
   }
 
   /** Generic request method. Makes a pg connection and returns the result
@@ -89,7 +134,6 @@ class ADHLServer extends webServiceServer {
     $connection = $this->config->get_value("CONNECTION");
     $db = new pg_db($connection, $this->watch);
     return $db->request($params, $request);
-
   }
 
   /** Generic response processor. Wraps a request result into a valid response object
@@ -97,14 +141,14 @@ class ADHLServer extends webServiceServer {
    * @param $responseWrapper
    * @return stdClass
    */
-  private function response($records, $responseWrapper){
+  private function response($records, $responseWrapper) {
     $response = new stdClass();
 
-    // prepare response-object
-    $response->$responseWrapper->_namespace="http://oss.dbc.dk/ns/adhl";
+// prepare response-object
+    $response->$responseWrapper->_namespace = "http://oss.dbc.dk/ns/adhl";
 
-    foreach( $records as $record )
-      $response->$responseWrapper->_value->pid[]->_value=helpFunc::convert_lid_and_lok_to_pid($record);
+    foreach ($records as $record)
+      $response->$responseWrapper->_value->pid[]->_value = helpFunc::convert_lid_and_lok_to_pid($record);
     return $response;
   }
 
@@ -113,12 +157,12 @@ class ADHLServer extends webServiceServer {
    * @param $params
    * @return array|bool|null|string
    */
-  private function getCache($cachekey, $params){
-    if (self::$cache && class_exists('cache')){
-      verbose::log(TRACE,"request-key::".$cachekey);
+  private function getCache($cachekey) {
+    if (self::$cache && class_exists('cache')) {
+      verbose::log(TRACE, "request-key::" . $cachekey);
 
-      if ( $ret = cache::get($cachekey) ) {
-        verbose::log(TRACE,"cachehit: ".$cachekey);
+      if ($ret = $this->cache->get($cachekey)) {
+        verbose::log(TRACE, "cachehit: " . $cachekey);
         return $ret;
       }
     }
@@ -129,11 +173,15 @@ class ADHLServer extends webServiceServer {
    * @param $cachekey
    * @param $value
    */
-  private function setCache($cachekey, $value){
-    if (!isset($value) || empty($value) || !class_exists('cache') || !self::$cache){
+  private function setCache($cachekey, $value) {
+//    if (!isset($value) || empty($value) || !class_exists('cache') || !self::$cache) {
+//      return;
+//    }
+    if (!class_exists('cache') || !self::$cache) {
       return;
     }
-    cache::set($cachekey,$value);
+    verbose::log(TRACE, "set-cache-key::" . $cachekey);
+    $this->cache->set($cachekey, $value);
   }
 
   /** \brief Echos config-settings
@@ -147,10 +195,10 @@ class ADHLServer extends webServiceServer {
     die();
   }
 
-
   public function __destruct() {
     $this->watch->stop("openadhl");
     verbose::log(TIMER, $this->watch->dump());
   }
 
 }
+

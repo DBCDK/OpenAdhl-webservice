@@ -1,12 +1,15 @@
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:adhl="http://oss.dbc.dk/ns/adhl">
     <soapenv:Header/>
     <soapenv:Body>
-        <adhl:topTenRequest>
+        <adhl:pingRequest>
+            <adhl:id>
+                <!--1 or more repetitions:-->
+                <adhl:pid>870970-basis:29267979</adhl:pid>
+            </adhl:id>
             <!--Optional:-->
-            <adhl:numRecords>20</adhl:numRecords>
             <adhl:outputType>XML</adhl:outputType>
             <!--Optional:-->
             <adhl:callback>?</adhl:callback>
-        </adhl:topTenRequest>
+        </adhl:pingRequest>
     </soapenv:Body>
 </soapenv:Envelope>

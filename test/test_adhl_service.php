@@ -1,10 +1,10 @@
 <?php
 
 set_include_path(
-  get_include_path() . PATH_SEPARATOR .
-  dirname(__FILE__) . '/../' . PATH_SEPARATOR .
-  dirname(__FILE__) . '/../OLS_class_lib/simpletest' .  PATH_SEPARATOR .
-  __DIR__ . '/..');
+    get_include_path() . PATH_SEPARATOR .
+    dirname(__FILE__) . '/../' . PATH_SEPARATOR .
+    dirname(__FILE__) . '/../OLS_class_lib/simpletest' . PATH_SEPARATOR .
+    __DIR__ . '/..');
 
 require_once( 'unit_tester.php');
 require_once( 'reporter.php');
@@ -12,7 +12,7 @@ require_once( 'xml.php');
 
 class TestADHLService extends UnitTestCase {
 
-  function setUp(){
+  function setUp() {
     /** include ADHL service classes */
     require_once("lib/ADHLServer.php");
     require_once("lib/pg_db.php");
@@ -22,8 +22,8 @@ class TestADHLService extends UnitTestCase {
     ADHLServer::$cache = false;
 
     // This constant may not have been defined
-    if (!defined('SQLT_INT')){
-      define ('SQLT_INT', 3);
+    if (!defined('SQLT_INT')) {
+      define('SQLT_INT', 3);
     }
   }
 
@@ -39,42 +39,40 @@ class TestADHLService extends UnitTestCase {
     $params = new stdClass();
     $params->id = new stdClass();
     $params->id->_namespace = 'http://oss.dbc.dk/ns/adhl';
-    $params->id->_value->pid= $pid;
+    $params->id->_value->pid = $pid;
 
+    var_dump($params);
 
     $server = new ADHLServer(dirname(__FILE__) . "/../adhl.ini");
 
-    $result = $server->ADHLRequestMethod($params, null);
+    $result = $server->ADHLRequestMethod($params, 500);
+    var_dump($result);
 
     // Expected response
     $expected_result = array
-    (
-      0 => array
       (
+      0 => array
+        (
         'lid' => '06977731',
         'lok' => '756100',
       ),
-
       1 => array
-      (
+        (
         'lid' => '07303033',
         'lok' => '737600',
       ),
-
       2 => array
-      (
+        (
         'lid' => '21131598',
         'lok' => '786000',
       ),
-
       3 => array
-      (
+        (
         'lid' => '21932108',
         'lok' => '758000',
       ),
-
       4 => array
-      (
+        (
         'lid' => '23534819',
         'lok' => '710100',
       ),
@@ -83,10 +81,8 @@ class TestADHLService extends UnitTestCase {
 
     // Test if request gives the expected response
     $this->assertEqual($result, $expected_result);
-
-
     // Test empty request
-    $params->id->_value= null;
+    $params->id->_value = null;
     $result = $server->ADHLRequestMethod($params, null);
 
     $this->assertEqual($result, array());
@@ -97,7 +93,6 @@ class TestADHLService extends UnitTestCase {
     $result = $server->ADHLRequestMethod($params, null);
 
     $this->assertEqual($result, array());
-
   }
 
   public function testTopTenRequestFlow() {
@@ -117,36 +112,33 @@ class TestADHLService extends UnitTestCase {
     $result = $server->topTenRequestMethod($params, null);
 
     $expected_result = array
-    (
-      0 => array
       (
+      0 => array
+        (
         'lid' => '28088078',
         'lok' => '710100',
         'count' => '3936'
       ),
       1 => array
-      (
+        (
         'lid' => '28186061',
         'lok' => '710100',
         'count' => '2705'
       ),
-
       2 => array
-      (
+        (
         'lid' => '27670806',
         'lok' => '775100',
         'count' => '2677'
       ),
-
       3 => array
-      (
+        (
         'lid' => '28186061',
         'lok' => '775100',
         'count' => '2667'
       ),
-
       4 => array
-      (
+        (
         'lid' => '27925715',
         'lok' => '710100',
         'count' => '2411'
@@ -162,16 +154,14 @@ class TestADHLService extends UnitTestCase {
     $result = $server->topTenRequestMethod($params, null);
 
     $this->assertTrue(count($result) == 10, 'Correct number of results, when request is empty');
-
-
   }
 
-  public function testPG_DB(){
+  public function testPG_DB() {
     // This constant has not been set when running the test
     require_once('pg_database_mockup.php');
     require_once('OLS_class_lib/timer_class.php');
 
-    $w =  new stopwatch('', ' ', '', '%s:%01.3f');
+    $w = new stopwatch('', ' ', '', '%s:%01.3f');
     $pg = new pg_db('test', $w);
     $params = array(
       'lid' => '04231066',
@@ -179,33 +169,29 @@ class TestADHLService extends UnitTestCase {
     );
     $result = $pg->request($params, 'ADHLRequest');
     $expected_result = array
-    (
-      0 => array
       (
+      0 => array
+        (
         'lid' => '06977731',
         'lok' => '756100',
       ),
-
       1 => array
-      (
+        (
         'lid' => '07303033',
         'lok' => '737600',
       ),
-
       2 => array
-      (
+        (
         'lid' => '21131598',
         'lok' => '786000',
       ),
-
       3 => array
-      (
+        (
         'lid' => '21932108',
         'lok' => '758000',
       ),
-
       4 => array
-      (
+        (
         'lid' => '23534819',
         'lok' => '710100',
       ),
@@ -233,11 +219,9 @@ class TestADHLService extends UnitTestCase {
     $result = $pg->request($params, 'ADHLRequest');
 
     $this->assertEqual($result, array(), 'Result is %s');
-
   }
 
-
-  public function testHelpFunc(){
+  public function testHelpFunc() {
     /* convert_lid_and_lok_to_pid */
 
     //empty
@@ -278,7 +262,6 @@ class TestADHLService extends UnitTestCase {
     $this->assertEqual($result, $expected_result, 'lok not starting with 7 returns pid from katalog');
 
     //get_lid_and_lok_from_pid
-
     // empty
     $pid = null;
     $result = helpFunc::get_lid_and_lok_from_pid($pid);
@@ -319,7 +302,6 @@ class TestADHLService extends UnitTestCase {
 
     $this->assertEqual($result, $expected_result, 'pid from katalog returns correct lid and lok');
   }
-
 
 }
 

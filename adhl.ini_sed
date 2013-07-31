@@ -1,4 +1,4 @@
 s/$host/postgres-tst001.dbc.dk/
 s/$user/adhl/
 s/$password/jhsbhto/
-s\$logfile\/tmp/adhl.log\
+s\$logfile\/tmp/isworker.adhl.log\

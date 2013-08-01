@@ -471,6 +471,54 @@
          <adhl:callback>?</adhl:callback>
       </adhl:adhlRequest>
    </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="ADHLRequest"/><con:wsrmConfig version="1.2"/></con:call><con:call name="Peder Pedal 4"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://guesstimate.dbc.dk/~hhl/OpenAdhl/server.php</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:adhl="http://oss.dbc.dk/ns/adhl">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <adhl:adhlRequest>
+         <adhl:id>
+            <!--1 or more repetitions:-->
+            <adhl:pid>870970-basis:29267979</adhl:pid>
+         </adhl:id>
+         <!--Optional:-->
+         
+         <!--Optional:-->
+         <adhl:numRecords>4</adhl:numRecords><adhl:outputType>XML</adhl:outputType>
+         <!--Optional:-->
+         <adhl:callback>?</adhl:callback>
+      </adhl:adhlRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="ADHLRequest"/><con:wsrmConfig version="1.2"/></con:call><con:call name="Peder Pedal 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://guesstimate.dbc.dk/~hhl/OpenAdhl/server.php</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:adhl="http://oss.dbc.dk/ns/adhl">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <adhl:adhlRequest>
+         <adhl:id>
+            <!--1 or more repetitions:-->
+            <adhl:pid>870970-basis:29267979</adhl:pid>
+         </adhl:id>
+         <!--Optional:-->
+         
+         <!--Optional:-->
+         <adhl:numRecords>1</adhl:numRecords><adhl:outputType>XML</adhl:outputType>
+         <!--Optional:-->
+         <adhl:callback>?</adhl:callback>
+      </adhl:adhlRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="ADHLRequest"/><con:wsrmConfig version="1.2"/></con:call><con:call name="Peder Pedal 0"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://guesstimate.dbc.dk/~hhl/OpenAdhl/server.php</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:adhl="http://oss.dbc.dk/ns/adhl">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <adhl:adhlRequest>
+         <adhl:id>
+            <!--1 or more repetitions:-->
+            <adhl:pid>870970-basis:29267979</adhl:pid>
+         </adhl:id>
+         <!--Optional:-->
+         
+         <!--Optional:-->
+         <adhl:numRecords>0</adhl:numRecords><adhl:outputType>XML</adhl:outputType>
+         <!--Optional:-->
+         <adhl:callback>?</adhl:callback>
+      </adhl:adhlRequest>
+   </soapenv:Body>
 </soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="ADHLRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="pingBinding" type="wsdl" bindingName="{http://oss.dbc.dk/ns/adhl}pingBinding" soapVersion="1_1" anonymous="optional" definition="http://guesstimate.dbc.dk/~hhl/OpenAdhl/adhl.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://guesstimate.dbc.dk/~hhl/OpenAdhl/adhl.wsdl"><con:part><con:url>http://guesstimate.dbc.dk/~hhl/OpenAdhl/adhl.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="adhlDefinition" targetNamespace="http://oss.dbc.dk/ns/adhl" xmlns:types="http://oss.dbc.dk/ns/adhl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
   <wsdl:documentation>This file is part of OpenLibrary.
         Copyright © 2009, Dansk Bibliotekscenter a/s,  Tempovej 7-11, DK-2750 Ballerup, Denmark. CVR: 15149043
@@ -773,19 +821,19 @@
          <adhl:callback>?</adhl:callback>
       </adhl:pingRequest>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="pingRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:testSuite name="topTenBinding TestSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="topTenRequest TestCase" searchProperties="true"><con:settings/><con:testStep type="request" name="topTenRequest"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>topTenBinding</con:interface><con:operation>topTenRequest</con:operation><con:request name="topTenRequest"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://guesstimate.dbc.dk/~hhl/OpenAdhl/server.php</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:adhl="http://oss.dbc.dk/ns/adhl">
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="pingRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:testSuite name="topTenBinding TestSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="topTenRequest TestCase" searchProperties="true" id="703a4d45-dbef-478f-b228-a814985229b5"><con:settings/><con:testStep type="request" name="topTenRequest" id="f708b843-3585-4d73-a0f5-f7f46de5be54"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>topTenBinding</con:interface><con:operation>topTenRequest</con:operation><con:request name="topTenRequest"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://guesstimate.dbc.dk/~hhl/OpenAdhl/server.php</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:adhl="http://oss.dbc.dk/ns/adhl">
    <soapenv:Header/>
    <soapenv:Body>
       <adhl:topTenRequest>
          <!--Optional:-->
-         <adhl:numRecords>?</adhl:numRecords>
+         
          <!--Optional:-->
-         <adhl:outputType>?</adhl:outputType>
+         <adhl:numRecords>20</adhl:numRecords><adhl:outputType>XML</adhl:outputType>
          <!--Optional:-->
          <adhl:callback>?</adhl:callback>
       </adhl:topTenRequest>
    </soapenv:Body>
-</soapenv:Envelope>]]></con:request><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:wsaConfig action="topTenRequest"/></con:request></con:config></con:testStep><con:properties/><con:reportParameters/></con:testCase><con:properties/><con:reportParameters/></con:testSuite><con:testSuite name="ADHLBinding TestSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="ADHLRequest TestCase" searchProperties="true" id="d2ac411d-08f2-4309-9387-a7b0eba34b0d"><con:settings/><con:testStep type="request" name="ADHLRequest - Journal 64"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ADHLBinding</con:interface><con:operation>ADHLRequest</con:operation><con:request name="ADHLRequest - Journal 64" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://guesstimate.dbc.dk/~hhl/OpenAdhl/server.php</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:adhl="http://oss.dbc.dk/ns/adhl">
+</soapenv:Envelope>]]></con:request><con:assertion type="Response SLA Assertion" name="Response SLA"><con:configuration><SLA>40</SLA></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig action="topTenRequest" mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/><con:reportParameters/><con:breakPoints><con:testStepId>f708b843-3585-4d73-a0f5-f7f46de5be54</con:testStepId><con:status>NONE</con:status><con:properties/></con:breakPoints></con:testCase><con:properties/><con:reportParameters/></con:testSuite><con:testSuite name="ADHLBinding TestSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="ADHLRequest TestCase" searchProperties="true" id="d2ac411d-08f2-4309-9387-a7b0eba34b0d"><con:settings/><con:testStep type="request" name="ADHLRequest - Journal 64"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ADHLBinding</con:interface><con:operation>ADHLRequest</con:operation><con:request name="ADHLRequest - Journal 64" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://guesstimate.dbc.dk/~hhl/OpenAdhl/server.php</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:adhl="http://oss.dbc.dk/ns/adhl">
    <soapenv:Header/>
    <soapenv:Body>
       <adhl:adhlRequest>
@@ -841,7 +889,77 @@
       </adhl:adhlRequest>
    </soapenv:Body>
 </soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" name="SOAP Response"/><con:assertion type="XPath Match" name="Match content of [pid]"><con:configuration><path>declare namespace types='http://oss.dbc.dk/ns/adhl';
-//types:adhlResponse[1]/pid[1]/text()</path><content>870970-basis:28204760</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" name="Response SLA"><con:configuration><SLA>2000</SLA></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="ADHLRequest"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/><con:reportParameters/></con:testCase><con:properties/><con:reportParameters/></con:testSuite><con:testSuite name="pingBinding TestSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="pingRequest TestCase" searchProperties="true"><con:settings/><con:testStep type="request" name="pingRequest"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>pingBinding</con:interface><con:operation>pingRequest</con:operation><con:request name="pingRequest"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://guesstimate.dbc.dk/~hhl/OpenAdhl/server.php</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:adhl="http://oss.dbc.dk/ns/adhl">
+//types:adhlResponse[1]/pid[1]/text()</path><content>870970-basis:28902239</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" name="Response SLA"><con:configuration><SLA>2000</SLA></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="ADHLRequest"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="ADHLRequest - Peder Pedal"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ADHLBinding</con:interface><con:operation>ADHLRequest</con:operation><con:request name="ADHLRequest - Peder Pedal" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://guesstimate.dbc.dk/~hhl/OpenAdhl/server.php</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:adhl="http://oss.dbc.dk/ns/adhl">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <adhl:adhlRequest>
+         <adhl:id>
+            <!--1 or more repetitions:-->
+            <adhl:pid>870970-basis:29267979</adhl:pid>
+         </adhl:id>
+         <!--Optional:-->
+         <adhl:numRecords>5</adhl:numRecords>
+         <!--Optional:-->
+         <adhl:outputType>XML</adhl:outputType>
+         <!--Optional:-->
+         <adhl:callback>?</adhl:callback>
+      </adhl:adhlRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" name="SOAP Response"/><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="ADHLRequest"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="ADHLRequest - Peder Pedal 4"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ADHLBinding</con:interface><con:operation>ADHLRequest</con:operation><con:request name="ADHLRequest - Peder Pedal 4" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://guesstimate.dbc.dk/~hhl/OpenAdhl/server.php</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:adhl="http://oss.dbc.dk/ns/adhl">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <adhl:adhlRequest>
+         <adhl:id>
+            <!--1 or more repetitions:-->
+            <adhl:pid>870970-basis:29267979</adhl:pid>
+         </adhl:id>
+         <!--Optional:-->
+         
+         <!--Optional:-->
+         <adhl:numRecords>4</adhl:numRecords><adhl:outputType>XML</adhl:outputType>
+         <!--Optional:-->
+         <adhl:callback>?</adhl:callback>
+      </adhl:adhlRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" name="SOAP Response"/><con:assertion type="XPath Match" name="Check count of [pid]"><con:configuration><path>declare namespace types='http://oss.dbc.dk/ns/adhl';
+count( //types:adhlResponse/pid)</path><content>4</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="ADHLRequest"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="ADHLRequest - Peder Pedal 1"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ADHLBinding</con:interface><con:operation>ADHLRequest</con:operation><con:request name="ADHLRequest - Peder Pedal 1" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://guesstimate.dbc.dk/~hhl/OpenAdhl/server.php</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:adhl="http://oss.dbc.dk/ns/adhl">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <adhl:adhlRequest>
+         <adhl:id>
+            <!--1 or more repetitions:-->
+            <adhl:pid>870970-basis:29267979</adhl:pid>
+         </adhl:id>
+         <!--Optional:-->
+         
+         <!--Optional:-->
+         <adhl:numRecords>1</adhl:numRecords><adhl:outputType>XML</adhl:outputType>
+         <!--Optional:-->
+         <adhl:callback>?</adhl:callback>
+      </adhl:adhlRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" name="SOAP Response"/><con:assertion type="XPath Match" name="Check count of [pid]"><con:configuration><path>declare namespace types='http://oss.dbc.dk/ns/adhl';
+count( //types:adhlResponse/pid)</path><content>1</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" name="Match content of [pid]"><con:configuration><path>declare namespace types='http://oss.dbc.dk/ns/adhl';
+//types:adhlResponse[1]/pid[1]/text()</path><content>870970-basis:26538750</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" name="Check for existance of [pid]"><con:configuration><path>declare namespace types='http://oss.dbc.dk/ns/adhl';
+exists( //types:adhlResponse/pid)</path><content>true</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:assertion type="XPath Match" name="Check for existance of [pid]"><con:configuration><path>declare namespace types='http://oss.dbc.dk/ns/adhl';
+exists( //types:adhlResponse/pid)</path><content>true</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="ADHLRequest"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:testStep type="request" name="ADHLRequest - Peder Pedal 0"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ADHLBinding</con:interface><con:operation>ADHLRequest</con:operation><con:request name="ADHLRequest - Peder Pedal 0" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://guesstimate.dbc.dk/~hhl/OpenAdhl/server.php</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:adhl="http://oss.dbc.dk/ns/adhl">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <adhl:adhlRequest>
+         <adhl:id>
+            <!--1 or more repetitions:-->
+            <adhl:pid>870970-basis:29267979</adhl:pid>
+         </adhl:id>
+         <!--Optional:-->
+         
+         <!--Optional:-->
+         <adhl:numRecords>0</adhl:numRecords><adhl:outputType>XML</adhl:outputType>
+         <!--Optional:-->
+         <adhl:callback>?</adhl:callback>
+      </adhl:adhlRequest>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" name="SOAP Response"/><con:assertion type="Simple Contains" name="Contains"><con:configuration><token/><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="XPath Match" name="XPath Match"><con:configuration/></con:assertion><con:assertion type="XPath Match" name="Check count of [pid]"><con:configuration><path>declare namespace types='http://oss.dbc.dk/ns/adhl';
+count( //types:adhlResponse/pid)</path><content>0</content><allowWildcards>false</allowWildcards><ignoreNamspaceDifferences>false</ignoreNamspaceDifferences><ignoreComments>false</ignoreComments></con:configuration></con:assertion><con:credentials><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="ADHLRequest"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/><con:reportParameters/></con:testCase><con:properties/><con:reportParameters/></con:testSuite><con:testSuite name="pingBinding TestSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="pingRequest TestCase" searchProperties="true"><con:settings/><con:testStep type="request" name="pingRequest"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>pingBinding</con:interface><con:operation>pingRequest</con:operation><con:request name="pingRequest"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://guesstimate.dbc.dk/~hhl/OpenAdhl/server.php</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:adhl="http://oss.dbc.dk/ns/adhl">
    <soapenv:Header/>
    <soapenv:Body>
       <adhl:pingRequest>

@@ -50,10 +50,6 @@ xmlns[xs] = http://www.w3.org/2001/XMLSchema
 ;path to xml-examples
 xmldir = ./xml
 
-[cache]
-host=localhost
-port=11211
-expire=3600
 
 ;settings for database access
 [database]

@@ -25,7 +25,7 @@ class ADHLServer extends webServiceServer {
    */
   public function ADHLRequest($params) {
 
-    $records = $this->ADHLRequestMethod($params, 500);
+    $records = $this->ADHLRequestMethod($params, 400);
 
     return $this->response($records, 'adhlResponse');
   }
@@ -121,7 +121,7 @@ class ADHLServer extends webServiceServer {
    */
   public function pingRequest($params) {
 
-    $records = $this->ADHLRequestMethod($params, 1);
+    $records = $this->ADHLRequestMethod($params, 5);
     return $this->response($records, 'adhlResponse');
   }
 

@@ -36,7 +36,6 @@ class ADHLServer extends webServiceServer {
    */
   public function ADHLRequestMethod($params, $limit) {
 
-
     $more_than_one_pid = false;
     $arr = $params->id->_value->pid;
     if (is_array($arr)) {
@@ -122,7 +121,7 @@ class ADHLServer extends webServiceServer {
   public function pingRequest($params) {
 
     $records = $this->ADHLRequestMethod($params, 5);
-    return $this->response($records, 'adhlResponse');
+    return $this->response($records, 'pingResponse');
   }
 
   /** Generic request method. Makes a pg connection and returns the result

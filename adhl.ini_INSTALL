@@ -65,7 +65,7 @@ VIP_DB=
 TABLE=laan
 ; PG_TABLE=laan
 
-CONNECTION=host=$host port=5433 dbname=adhl user=$user password=$password
+CONNECTION=host=$host port=5432 dbname=adhl user=$user password=$password
 
 
 

@@ -1,12 +1,12 @@
 <?php
 
 /*
-  brief \wrapper for pg_database_class
+   brief \wrapper for pg_database_class
  */
 
 class pg_db {
 
-// member to hold instance of pg_database_class
+  // member to hold instance of pg_database_class
   private $pg;
   public $watch;
 
@@ -67,7 +67,7 @@ class pg_db {
       $lid .= "'" . $lokalid['lid'] . "',";
     }
     $lid = trim($lid, ",");
-//    $lid = $params['lid'];
+    //    $lid = $params['lid'];
     $limit = isset($params['numRecords']) ? $params['numRecords'] : 5;
     $userlimit = $params['UserLimit'];
 
@@ -76,53 +76,53 @@ class pg_db {
     $Y = 2;
 
     $query = "
-    with
-    klyngeids as
-    (
-      select klynge from $laan
-      where lokalid in
-    (
-      $lid
-    )
-    /* Her kan man sætte betingelser som køn alder etc.
-    and
-    (
-      koen = 'k' or koen = 'm'
-    )
-    */
-    group by klynge
-    having count(*) >= $X
-    ),
-    totalis as
-    (
-      select count(*)as max from $laan
-    	where klynge in (select klynge from klyngeids)
-    )
+      with
+      klyngeids as
+      (
+       select klynge from $laan
+       where lokalid in
+       (
+        $lid
+       )
+       /* Her kan man sætte betingelser som køn alder etc.
+          and
+          (
+          koen = 'k' or koen = 'm'
+          )
+        */
+       group by klynge
+       having count(*) >= $X
+      ),
+      totalis as
+        (
+         select count(*)as max from $laan
+         where klynge in (select klynge from klyngeids)
+        )
 
-    SELECT min(laant_pa_bibliotek) as lok, lokalid as lid
-    from $laan
-    where klynge not in
-    (
-      select klynge from klyngeids
-    )
-    and laanerid in
-    (
-      SELECT laanerid
-      FROM $laan
-      WHERE klynge in
-      (
-        select klynge from klyngeids
-      )
-      and
-      (
-        (select * from totalis)>= $Y
-      )
-      group by laanerid
-      limit $userlimit
-    )
-    group by lokalid
-    order by count(*)
-    desc limit $limit;
+        SELECT min(laant_pa_bibliotek) as lok, lokalid as lid
+        from $laan
+        where klynge not in
+        (
+         select klynge from klyngeids
+        )
+        and laanerid in
+        (
+         SELECT laanerid
+         FROM $laan
+         WHERE klynge in
+         (
+          select klynge from klyngeids
+         )
+         and
+         (
+          (select * from totalis)>= $Y
+         )
+         group by laanerid
+         limit $userlimit
+        )
+        group by lokalid
+        order by count(*)
+        desc limit $limit;
     ";
 
 
@@ -135,19 +135,19 @@ class pg_db {
   private function topADHLRequest($params) {
     $numRecords = isset($params['numRecords']) ? $params['numRecords'] : 10;
     $this->bind("top_ten_request", $numRecords, SQLT_INT);
-//    $query = 'select lokalid as lid, laant_pa_bibliotek as lok, count(lokalid) as count from laan
-//                where laan_i_klynge in(
-//                  select distinct laan_i_klynge from laan order by laan_i_klynge desc limit $1
-//                )
-//                group by lid, lok
-//                order by count desc
-//                limit $1';
+    //    $query = 'select lokalid as lid, laant_pa_bibliotek as lok, count(lokalid) as count from laan
+    //                where laan_i_klynge in(
+    //                  select distinct laan_i_klynge from laan order by laan_i_klynge desc limit $1
+    //                )
+    //                group by lid, lok
+    //                order by count desc
+    //                limit $1';
     $laan_i_klynge = 'laan_i_klynge';
     $query = "
       select lokalid as lid, laan_i_klynge from $laan_i_klynge
       order by laan_i_klynge desc
       limit $1
-    ";
+      ";
     $this->query($query);
   }
 
@@ -165,6 +165,7 @@ class pg_db {
    */
   function query($query) {
 
+    verbose::log(DEBUG, $query);
     try {
       $this->pg->set_query($query);
     } catch (Exception $e) {
@@ -200,4 +201,13 @@ class pg_db {
   }
 
 }
+
+//*
+//* Local variables:
+//* tab-width: 2
+//* c-basic-offset: 2
+//* End:
+//* vim600: sw=2 ts=2 fdm=marker expandtab
+//* vim<600: sw=2 ts=2 expandtab
+//*/
 

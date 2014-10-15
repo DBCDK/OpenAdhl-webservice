@@ -1,4 +1,24 @@
 <?php
+/** \brief
+ *
+ * This file is part of OpenLibrary.
+ * Copyright © 2009, Dansk Bibliotekscenter a/s,
+ * Tempovej 7-11, DK-2750 Ballerup, Denmark. CVR: 15149043
+ *
+ * OpenLibrary is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * OpenLibrary is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with OpenLibrary.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 
 /** \brief
  *  Class holds static functions used for handling the request.
@@ -51,11 +71,21 @@ class helpFunc {
   public static function get_lid_and_lok_from_pid($pid) {
     if (preg_match('@(.*)-.*:(.*)@', $pid, $matches)) {
       return array(
-        'lok' => $matches[1],
-        'lid' => $matches[2],
-      );
+          'lok' => $matches[1],
+          'lid' => $matches[2],
+          );
     }
     return null;
   }
 
 }
+
+
+//*
+//* Local variables:
+//* tab-width: 2
+//* c-basic-offset: 2
+//* End:
+//* vim600: sw=2 ts=2 fdm=marker expandtab
+//* vim<600: sw=2 ts=2 expandtab
+//*/

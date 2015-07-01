@@ -71,11 +71,21 @@
     <xs:element name="pingResponse">
         <xs:complexType>
             <xs:sequence>
-                <xs:element ref="types:pid" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="types:recorddata" minOccurs="0" maxOccurs="unbounded"/>
                 <xs:element ref="types:error" minOccurs="0"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
+    <xs:element name="recorddata">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="types:pid"/>
+                <xs:element ref="types:title"/>
+                <xs:element ref="types:creator"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
 
     <xs:element name="age">
         <xs:complexType>

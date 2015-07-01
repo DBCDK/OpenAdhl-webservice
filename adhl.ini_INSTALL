@@ -5,9 +5,9 @@
 wsdl = adhl.wsdl
 
 ;version
-version = 3.0
+version = 4.0
 
-; memcache
+; memcache TODO skal nok droppes
 cache_host = $localhost
 cache_port = $port
 cache_expire = $time
@@ -35,11 +35,6 @@ logfile = $logfile
 ;   OCI     - oracle
 verbose = WARNING+ERROR+FATAL+STAT+TIMER+TRACE+DEBUG+Z3950
 
-;php file for classmap
-;classes = ADHL_classes.php
-
-;baseurl for curl
-;baseurl=http://guesstimate.dbc.dk/~hhl/OpenAdhl/server.php
 
 xmlns[xml] = http://www.w3.org/XML/1998/namespace
 xmlns[wsdl] = http://schemas.xmlsoap.org/wsdl/
@@ -50,6 +45,9 @@ xmlns[xs] = http://www.w3.org/2001/XMLSchema
 ;path to xml-examples
 xmldir = ./xml
 
+[search]
+default_response_recs=20
+minimum_loans=2
 
 ;settings for database access
 [database]
@@ -61,14 +59,11 @@ xmldir = ./xml
 VIP_US=mycredentials
 VIP_PW=
 VIP_DB=
-;TABLE=temp
-TABLE=laan
-; PG_TABLE=laan
 
-CONNECTION=host=$host port=5432 dbname=adhl user=$user password=$password
-
-
-
+[solr]
+; Parameters for Solr communication
+; solr_server = http://solr_server.right.there
+;
 [rest]
 ; valid parameters for rest-request
 ;action[ADHLRequest][id][]=faust
@@ -81,6 +76,7 @@ CONNECTION=host=$host port=5432 dbname=adhl user=$user password=$password
 ;action[ADHLRequest][age][]=maxAge
 ;action[ADHLRequest][]=numRecords
 ;action[ADHLRequest][]=sex
+action[ADHLRequest][id][]=pid
 
 ;action[topTenRequest][id][localId][]=lok
 ;action[topTenRequest][id][localId][]=lid
@@ -93,9 +89,9 @@ action[ALL][] = callback
 
 ;section for testing the service
 [howru]
-test[]=ADHLRequest&isbn=978-87-7053-256-3
-preg_match[]=record
-error[]=ERROR getting isbn=978-87-7053-256-3
+test[]=ADHLRequest&pid=870970-basis:29938768
+preg_match[]=pid
+error[]=ERROR finding ADHL matches for pid=870970-basis:29938768
 
 ;isbn=87-986036-2-0
 ;outputType=XML
